@@ -33,25 +33,27 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table
-                  id="basic-datatables"
-                  class="display table table-striped table-hover"
-                >
+                <table id="basic-datatables" class="display table table-striped table-hover">
                   <thead>
                     <tr>
                       <th>Nome do Utilizador</th>
                       <th>E-mail</th>
                       <th>Tipo de Utilizador</th>
-                      <th></th>
                     </tr>
                   </thead>
+                  <tfoot>
+                    <tr>
+                        <th>Nome do Utilizador</th>
+                        <th>E-mail</th>
+                        <th>Tipo de Utilizador</th>
+                    </tr>
+                  </tfoot>
                   <tbody>
                     @foreach ($user as $use)
                         <tr>
                             <td>{{$use->name}}</td>
                             <td>{{$use->email}}</td>
                             <td>{{$use->tipo}}</td>
-                            <td></td>
                         </tr>
                     @endforeach
                   </tbody>
@@ -62,6 +64,6 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 @endsection
