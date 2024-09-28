@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('carrinhos', function (Blueprint $table) {
             $table->id();
+            $table->integer('qtd')->default(0);
+            $table->string('estado');
+            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('no action');
+            $table->foreignId('produto_id')->constrained('produtos')->onDelete('no action');
             $table->timestamps();
         });
     }

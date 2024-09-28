@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('imagems', function (Blueprint $table) {
             $table->id();
+            $table->string('imagem');
+            $table->string('categ');
+            $table->foreignId('produto_id')->constrained('produtos')->onDelete('no action');
             $table->timestamps();
         });
     }
