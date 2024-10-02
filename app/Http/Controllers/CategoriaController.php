@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use Exception;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -12,7 +13,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categoria = Categoria::all();
+        return view("admin.categoria", compact("categoria"));
     }
 
     /**
@@ -28,7 +30,38 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = null;
+        try{
+            if(isset($request->id)){
+                $categoria = Categoria::find($request->id);
+            }else{
+                $categoria = new Categoria();
+            }
+
+            if(isset($request->imagem)){
+                $file = $request->imagem;
+                $extecio = $file->extension();
+                $imagename = md5($file->getClientOriginalName().strtotime('now'));
+                $file->move(public_path('img/categoria'), $imagename);
+                $categoria->imagem = $imagename;
+            }
+            $categoria->titulo = $request->titulo;
+            $categoria->descricao = $request->descricao;
+            $categoria->save();
+            return redirect()->back()->with('success','Cadastro realizado com exito');
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function apagar($categoria)
+    {
+        try{
+            Categoria::find($categoria)->delete();
+            return redirect()->back()->with('success','Realizado com exito');
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     /**

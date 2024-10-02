@@ -12,6 +12,8 @@
       href="{{asset('admin/img/kaiadmin/favicon.ico')}}"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="{{asset('fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 
     <!-- Fonts and icons -->
     <script src="{{asset('admin/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -97,41 +99,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarLayouts">
+                <a href="{{route('catego.index')}}">
                   <i class="fas fa-th-list"></i>
-                  <p>Sidebar Layouts</p>
+                  <p>Categoria</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="sidebarLayouts">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="sidebar-style-2.html">
-                        <span class="sub-item">Sidebar Style 2</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="icon-menu.html">
-                        <span class="sub-item">Icon Menu</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#forms">
-                  <i class="fas fa-pen-square"></i>
-                  <p>Forms</p>
-                  <span class="caret"></span>
-                </a>
-                <div class="collapse" id="forms">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="forms/forms.html">
-                        <span class="sub-item">Basic Form</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#tables">
@@ -331,8 +303,8 @@
                       />
                     </div>
                     <span class="profile-username">
-                      <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="op-7">Ola,</span>
+                      <span class="fw-bold">{{Auth::user()->name}}</span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -347,25 +319,19 @@
                             />
                           </div>
                           <div class="u-text">
-                            <h4>Hizrian</h4>
-                            <p class="text-muted">hello@example.com</p>
+                            <h4>{{Auth::user()->name}}</h4>
+                            <p class="text-muted">{{Auth::user()->email}}</p>
                             <a
                               href="profile.html"
                               class="btn btn-xs btn-secondary btn-sm"
-                              >View Profile</a
+                              >Ver o Perfil</a
                             >
                           </div>
                         </div>
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="#">My Balance</a>
-                        <a class="dropdown-item" href="#">Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Account Setting</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="{{route('sairadmin')}}">Sair</a>
                       </li>
                     </div>
                   </ul>
