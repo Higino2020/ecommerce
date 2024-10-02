@@ -163,7 +163,7 @@
       // loop em todas as linhas da tabela e oculte aquelas que não correspondem à consulta de pesquisa
       for (i = 0; i < tr.length; i++)  
       {
-        td = tr[i].getElementsByTagName("td")[0];
+        td = tr[i].getElementsByTagName("td")[1];
         if (td) 
         {
           txtValue = td.textContent || td.innerText;
