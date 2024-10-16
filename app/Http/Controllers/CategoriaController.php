@@ -31,11 +31,14 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $categoria = null;
+        $sms = "";
         try{
             if(isset($request->id)){
                 $categoria = Categoria::find($request->id);
+                $sms = "Actulizado com exito";
             }else{
                 $categoria = new Categoria();
+                $sms = "Cadastro realizado com exito";
             }
 
             if(isset($request->imagem)){
@@ -48,7 +51,7 @@ class CategoriaController extends Controller
             $categoria->titulo = $request->titulo;
             $categoria->descricao = $request->descricao;
             $categoria->save();
-            return redirect()->back()->with('success','Cadastro realizado com exito');
+            return redirect()->back()->with('success',$sms);
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
         }

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="page-inner">
       <div class="page-header">
-        <h3 class="fw-bold mb-3">Categoria</h3>
+        <h3 class="fw-bold mb-3">Marcas</h3>
         
         <ul class="breadcrumbs mb-3">
           <li class="nav-home">
@@ -22,7 +22,7 @@
             <i class="icon-arrow-right"></i>
           </li>
           <li class="nav-item">
-            <a href="#">Categoria</a>
+            <a href="#">Marcas</a>
           </li>
         </ul>
       </div>
@@ -40,7 +40,8 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header titulo">
-              <h4 class="card-title">Lista de Categoria</h4>
+              <h4 class="card-title">Lista de Maracas</h4>
+              {{--Começou aqui e terminou na linha 150  --}}
               <input type="text" id="campo_busca" onkeyup="busca()" style="width: 30%" class="form-control" placeholder="buscar dados">
               <a href="#Cadastrar" onclick="limpar()" data-bs-toggle="modal" class="text-primary" style="font-size: 30px"><i class="fa fa-circle-plus"></i></a>
             </div>
@@ -51,20 +52,20 @@
                   <thead>
                     <tr>
                       <th>Imagem</th>
-                      <th>Titulo da categoria</th>
+                      <th>Nome da Marca</th>
                       <th>Descrição</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($categoria as $cate)
+                    @foreach ($marca as $mark)
                         <tr>
-                            <td><img  src="{{asset('img/categoria/'.$cate->imagem)}}" style="width: 50px; height: 50px;object-fit: cover" alt=""></td>
-                            <td>{{$cate->titulo}}</td>
-                            <td>{{$cate->descricao}}</td>
+                            <td><img  src="{{asset('img/marca/'.$mark->imagem)}}" style="width: 50px; height: 50px;object-fit: cover" alt=""></td>
+                            <td>{{$mark->titulo}}</td>
+                            <td>{{$mark->descricao}}</td>
                             <td>
-                                <a href="#Cadastrar" data-bs-toggle="modal" onclick="editar({{$cate}})" style="font-size: 20px; margin-right:10px" class="text-primary"><i class="fa fa-edit"></i></a>
-                                <a href="#Confirmar" onclick="atribuirhref({{$cate->id}})" data-bs-toggle="modal"  class="text-danger" style="font-size: 20px"><i class="fa fa-trash"></i></a>
+                                <a href="#Cadastrar" data-bs-toggle="modal" onclick="editar({{$mark}})" style="font-size: 20px; margin-right:10px" class="text-primary"><i class="fa fa-edit"></i></a>
+                                <a href="#Confirmar" onclick="atribuirhref({{$mark->id}})" data-bs-toggle="modal"  class="text-danger" style="font-size: 20px"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -84,7 +85,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">
-                    Cadastro de Categoria
+                    Cadastro de marca
                 </h5>
                 <button
                     type="button"
@@ -97,10 +98,10 @@
                 <form action="{{route('catego.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="id">
-                    <x-input-form id="imagem" type="file" name="imagem" titulo="Imagem da Categoria" />
-                    <x-input-form id="titulo" type="text" name="titulo" titulo="Titulo da Categoria" />
+                    <x-input-form id="imagem" type="file" name="imagem" titulo="Imagem da Marca" />
+                    <x-input-form id="titulo" type="text" name="titulo" titulo="Nome da Marca" />
                     <div class="form-group">
-                        <label for="">Descrição da Categoria</label>
+                        <label for="">Descrição da Marca</label>
                         <div class="input-form">
                             <textarea name="descricao" style="resize: none" id="descricao" cols="30" rows="4" class="form-control"></textarea>
                         </div>
@@ -136,8 +137,9 @@
 
     
 
-
+{{-- Consulta por filtro mas começou na linha 45  --}}
 <script>
+
     function busca() {
       // declaração das variaáveis
       var input, filter, table, tr, td, i, txtValue;
@@ -164,6 +166,7 @@
       }
     }
     </script>
+  {{-- fim da consulta por filtro --}}
 
     <script>
       function editar(valor){
@@ -177,7 +180,7 @@
         document.getElementById('descricao').value = ""
       }
       function atribuirhref(id){
-        document.getElementById('apagarid').setAttribute("href","http://localhost:8000/gestor/catego/"+id+"/apagar")
+        document.getElementById('apagarid').setAttribute("href","http://localhost:8000/gestor/marca/"+id+"/apagar")
       }
     </script>
 
@@ -187,7 +190,7 @@
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="modalTitleId">
-                Confirmação de Exclusão de Categoria
+                Confirmação de Exclusão da marca
               </h5>
               <button
                   type="button"
