@@ -113,16 +113,12 @@
                     <x-input-form id="imagem" type="file" name="imagem" titulo="Imagem do produto" />
                    </div>
                     <div class="row">
-                        <div class="form-group col-12 col-md-6 col-lg-6">
-                            <label for="">Escolha a Marca </label>
-                            <select name="marca_id" id="marca_id" class="form-control">
-                                <option value="" disabled>Escolhe a Marca</option>
-                                @foreach (App\Models\Marca::all() as $item)
-                                    <option value="{{$item->id}}">{{$item->titulo}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <x-input-form-adapt id="codigo" type="text" name="codigo" titulo="Codigo do Produto" />
+                      <x-select id="marca_id" name="marca_id" titulo="Escolha a Marca" rotulo="Escolhe a Marca" >
+                        @foreach (App\Models\Marca::all() as $item)
+                          <option value="{{$item->id}}">{{$item->titulo}}</option>
+                        @endforeach
+                      </x-select>
+                      <x-input-form-adapt id="codigo" type="text" name="codigo" titulo="Codigo do Produto" />
                     </div>
                     <div class="row">
                       <x-input-form-adapt id="titulo" type="text" name="titulo" titulo="Titulo do produto" />
@@ -130,55 +126,33 @@
                     </div>
                     <div class="row">
                         <x-input-form-adapt id="qtd" type="number" name="qtd" titulo="Quantidade Existente" />
-                        <div class="form-group col-12 col-md-6 col-lg-6">
-                            <label for="">Estado do produto </label>
-                            <select name="estado" id="estado" class="form-control">
-                                <option value="Novo" selected>Novo</option>
-                                <option value="Semi-Novo">Semi-Novo</option>
-                                <option value="Usado">Usado</option>
-                                <option value="Concertado">Concertado</option>
-                            </select>
-                        </div>
+                        <x-select id="estado" name="estado" titulo="Estado do produto" rotulo="Escolhe o estado do produto" >
+                          <option value="Novo" selected>Novo</option>
+                          <option value="Semi-Novo">Semi-Novo</option>
+                          <option value="Usado">Usado</option>
+                          <option value="Concertado">Concertado</option>
+                        </x-select>
                     </div>
                     <div class="row">
-                        <div class="form-group col-12 col-md-6 col-lg-6">
-                            <label for="">Escolha a Categoria </label>
-                            <select name="categoria_id" id="categoria_id" class="form-control">
-                                <option value="" disabled>Escolhe uma categoria </option>
-                                @foreach (App\Models\Categoria::all() as $item)
-                                    <option value="{{$item->id}}">{{$item->titulo}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-12 col-md-6 col-lg-6">
-                            <label for="">Escolha a Subcategoria </label>
-                            <select name="subcategoria_id" id="subcategoria_id" class="form-control">
-                                <option value="" disabled>Escolhe uma subcategoria </option>
-                                @foreach (App\Models\Subcategoria::all() as $item)
-                                    <option value="{{$item->id}}">{{$item->titulo}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                      <x-select id="categoria_id" name="categoria_id" titulo="Escolha a Categoria" rotulo="Escolhe uma categoria" >
+                          @foreach (App\Models\Categoria::all() as $item)
+                            <option value="{{$item->id}}">{{$item->titulo}}</option>
+                          @endforeach
+                      </x-select>
+                      <x-select id="subcategoria_id" name="subcategoria_id" titulo="Escolha a Subcategoria" rotulo="Escolhe uma subcategoria" >
+                          @foreach (App\Models\Subcategoria::all() as $item)
+                            <option value="{{$item->id}}">{{$item->titulo}}</option>
+                          @endforeach
+                      </x-select>
                     </div>
                     
                     <div class="row">
-                        <div class="form-group col-12">
-                            <label for="">Descrição da Categoria</label>
-                            <div class="input-form">
-                                <textarea name="descricao" style="resize: none" id="descricao" cols="30" rows="4" class="form-control"></textarea>
-                            </div>
-                        </div>
+                      <x-descricao-component titulo="Descrição da Produto" />
+
                     </div>
             </div>
             <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                >
-                    Concelar
-                </button>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+              <x-button />
             </div>
         </form>
         </div>

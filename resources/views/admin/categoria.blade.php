@@ -99,15 +99,10 @@
                     <input type="hidden" name="id" id="id">
                     <x-input-form id="imagem" type="file" name="imagem" titulo="Imagem da Categoria" />
                     <x-input-form id="titulo" type="text" name="titulo" titulo="Titulo da Categoria" />
-                    <div class="form-group">
-                        <label for="">Descrição da Categoria</label>
-                        <div class="input-form">
-                            <textarea name="descricao" style="resize: none" id="descricao" cols="30" rows="4" class="form-control"></textarea>
-                        </div>
-                    </div>
+                   <x-descricao-component titulo="Descrição da Categoria"/>
             </div>
             <div class="modal-footer">
-                <button
+               <button
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"

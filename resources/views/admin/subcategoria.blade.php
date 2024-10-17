@@ -119,22 +119,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="">Descrição da Categoria</label>
-                        <div class="input-form">
-                            <textarea name="descricao" style="resize: none" id="descricao" cols="30" rows="4" class="form-control"></textarea>
-                        </div>
-                    </div>
+                    <x-descricao-component titulo="Descrição da SubCategoria" />
+
             </div>
             <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                >
-                    Concelar
-                </button>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+              <x-button />
             </div>
         </form>
         </div>

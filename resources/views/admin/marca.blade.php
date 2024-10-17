@@ -100,22 +100,11 @@
                     <input type="hidden" name="id" id="id">
                     <x-input-form id="imagem" type="file" name="imagem" titulo="Imagem da Marca" />
                     <x-input-form id="titulo" type="text" name="titulo" titulo="Nome da Marca" />
-                    <div class="form-group">
-                        <label for="">Descrição da Marca</label>
-                        <div class="input-form">
-                            <textarea name="descricao" style="resize: none" id="descricao" cols="30" rows="4" class="form-control"></textarea>
-                        </div>
-                    </div>
+                    <x-descricao-component titulo="Descrição da Marca" />
+
             </div>
             <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                >
-                    Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+              <x-button />
             </div>
         </form>
         </div>
